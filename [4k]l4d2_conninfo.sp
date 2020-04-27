@@ -44,7 +44,6 @@ public void OnClientDisconnect(int client)
 		GetClientName(client, name, sizeof(name));
 		CPrintToChatAll("{olive}%s {default}left the game.", name);
 		g_flTimeConnected[client] = 0.0;
-		
 	}
 }
 public Action PrintDelay(Handle timer, int client)
