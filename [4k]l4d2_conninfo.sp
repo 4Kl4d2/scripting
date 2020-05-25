@@ -1,4 +1,5 @@
 #include <sourcemod>
+#undef REQUIRE_EXTENSIONS
 #include <geoip>
 #include <colors>
 #include <smlib>
@@ -13,7 +14,7 @@ Handle g_PrintDelay[MAXPLAYERS + 1];
 
 public Plugin myinfo = 
 {
-	name = "4K Connect Info", 
+	name = "[L4D2] 4K Connect Info", 
 	author = "C0lt", 
 	description = "Display Player nickname, country , and loading time", 
 	version = "4K.2", 
@@ -37,7 +38,7 @@ public void OnClientPutInServer(int client)
 }
 public void OnClientDisconnect(int client)
 {
-	if(Client_IsValid(client) && !IsFakeClient(client))
+	if (Client_IsValid(client) && !IsFakeClient(client))
 	{
 		if (!GetConVarBool(g_DisconnectMessage))return;
 		char name[128];
@@ -48,14 +49,14 @@ public void OnClientDisconnect(int client)
 }
 public Action PrintDelay(Handle timer, int client)
 {
-	 if(Client_IsValid(client) && !IsFakeClient(client))
+	if (Client_IsValid(client) && !IsFakeClient(client))
 	{
 		float LoadingTime = GetEngineTime() - g_flTimeConnected[client];
 		char ip[64], country[64], name[128];
 		GetClientName(client, name, sizeof(name));
 		GetClientIP(client, ip, sizeof(ip));
 		GeoipCountry(ip, country, sizeof(country));
-		//PrintToServer("[%s] , [%s], [%s] [%.2f]", name, ip, country, flFinalTime);
+		//PrintToServer("[%s] , [%s], [%s] [%.2f] [%s]", name, ip, country, LoadingTime, ccode);
 		CPrintToChatAll("{olive}%s {default}from {blue}%s {default}connected in {green}%.2f {default}seconds.", name, country, LoadingTime);
 	}
-}
+} 
