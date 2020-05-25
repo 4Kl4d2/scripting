@@ -1,10 +1,6 @@
 #pragma semicolon 1
 
 #define DEBUG
-
-#define PLUGIN_AUTHOR "C0lt"
-#define PLUGIN_VERSION "4k"
-
 #include <sourcemod>
 
 #pragma newdecls required
@@ -18,9 +14,9 @@ Handle SpecialInfected;
 public Plugin myinfo = 
 {
 	name = "[L4D2] 4K Precacher", 
-	author = PLUGIN_AUTHOR, 
+	author = "C0lt", 
 	description = "4K Precacher", 
-	version = PLUGIN_VERSION, 
+	version = "4K", 
 	url = "https://steamcommunity.com/groups/4kservers"
 };
 public void OnPluginStart()
@@ -31,7 +27,7 @@ public void OnPluginStart()
 	{
 		SetFailState("L4D2 Support only !");
 	}
-	CreateConVar("4k_precacher_version", "PLUGIN_VERSION", "Plugins Version");
+	CreateConVar("4k_precacher_version", "4K", "Plugins Version");
 	CvarPrintToServer = CreateConVar("l4d2_console_info", "1", "Prints text to server");
 	L4d2Survivors = CreateConVar("l4d2_survivors", "1", "Precache L4D2 Survivors");
 	L4dSurvivors = CreateConVar("l4d_survivors", "1", "Precache L4D Survivors");
